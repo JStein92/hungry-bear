@@ -1,13 +1,15 @@
 import { HungryBear } from './../js/hungrybear.js';
-
+import { BearManager } from './../js/bearManager.js';
 describe('HungryBear', function() {
   let fuzzy = new HungryBear("Fuzzy");
-
+  let bearManager = new BearManager();
   beforeEach(function() {
     jasmine.clock().install();
     fuzzy.setHunger();
-  });
 
+
+  });
+    bearManager.allBears.push(fuzzy);
   afterEach(function() {
     jasmine.clock().uninstall();
   });
@@ -37,6 +39,16 @@ describe('HungryBear', function() {
     jasmine.clock().tick(9001);
     fuzzy.feed();
     expect(fuzzy.foodLevel).toEqual(10);
+  });
+
+  it ('should produce milk', function(){
+      fuzzy.produce();
+      jasmine.clock().tick(3001);
+      expect(fuzzy.milk).toEqual(10);
+  });
+
+  it ('should get total milk', function(){
+    expect(bearManager.getTotalMilk()).toEqual(10);
   });
 
 });
