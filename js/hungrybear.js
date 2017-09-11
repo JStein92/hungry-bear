@@ -6,6 +6,7 @@ export class HungryBear {
       this.id = id;
       id ++;
       this.name = name;
+      this.foodLevelMax = 10;
       this.foodLevel = 10;
       this.milk = 0;
     }
@@ -25,7 +26,7 @@ export class HungryBear {
   }
 
   feed() {
-    this.foodLevel = 10;
+    this.foodLevel = this.foodLevelMax;
   }
 
   produce() {

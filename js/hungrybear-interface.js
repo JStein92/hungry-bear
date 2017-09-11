@@ -34,8 +34,7 @@ $(function(){
       for (var i = 0; i < bearManager.allBears.length; i++) {
         $(`#bear${bearManager.allBears[i].id}`).text(bearManager.allBears[i].foodLevel);
         $(`#milk${bearManager.allBears[i].id}`).text(bearManager.allBears[i].milk);
-        $('#totalMilk').text(bearManager.getTotalMilk());
-
+        $('#totalMilk').text(bearManager.returnTotalMilk());
         if (bearManager.allBears[i].didYouGetEaten()){
 
           try {
@@ -45,12 +44,22 @@ $(function(){
             bearManager.allBears.length = 0;
             bearManager.totalMilk = 0;
           } catch(error) {
-            console.error(`Alert! The game was not able to be reset: ${error.message)`)
+            console.error(`Alert! The game was not able to be reset: ${error.message}`);
           }
 
         }
     }
   }, 100);
+
+  setInterval(() => {
+
+    $('#totalMilk').text(bearManager.getTotalMilk());
+
+  }, 500;
+
+  $('#upgradeStomach').click(function(){
+    bearManager.upgradeStomach();
+  });
 
   $('#playAgain').submit(function(e){
     e.preventDefault();

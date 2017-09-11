@@ -51,4 +51,10 @@ describe('HungryBear', function() {
     expect(bearManager.getTotalMilk()).toEqual(10);
   });
 
+  it ('should increase bear stomach capacity',function(){
+    bearManager.upgradeStomach();
+    fuzzy.feed();
+    expect(fuzzy.foodLevel).toEqual(15);
+  });
+
 });

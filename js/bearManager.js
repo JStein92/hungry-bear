@@ -9,11 +9,31 @@ export class BearManager {
   }
 
   getTotalMilk(){
-    this.totalMilk= 0;
-    for (var i = 0; i < this.allBears.length; i++) {
-      this.totalMilk += this.allBears[i].milk;
-    }
+
+    this.totalMilk += this.allBears.length;
     return this.totalMilk;
+  }
+
+  returnTotalMilk(){
+    return this.totalMilk;
+  }
+
+  upgradeStomach() {
+    if (this.totalMilk >= 100)
+    {
+      for (var i = 0; i < this.allBears.length; i++) {
+        this.allBears[i].foodLevelMax += 5;
+      }
+      this.totalMilk-=100;
+    }
+  }
+
+
+
+  feedAll() {
+    for (var i = 0; i < this.allBears.length; i++) {
+      this.allBears[i].feed();
+    }
   }
 
 }
